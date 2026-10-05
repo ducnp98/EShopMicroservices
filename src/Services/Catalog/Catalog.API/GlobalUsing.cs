@@ -10,3 +10,5 @@ global using BuildingBlock.Behavior;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Mvc;
 global using BuildingBlock.Exceptions.Handler;
+global using Catalog.API.Data;
+ 

@@ -1,18 +1,18 @@
-namespace Catalog.API.Products.GetProductById;
+namespace Catalog.API.Products.GetProducts;
 
-public record GetProductsQuery() : IQuery<GetProductsResult>;
+public record GetProductByIdQuery(Guid Id) : IQuery<GerProductByIdResult>;
 
-public record GetProductsResult (IEnumerable<Product> Products);
+public record GerProductByIdResult (Product Product);
 
-public class GetProductsQueryHandler(IDocumentSession session, ILogger<GetProductsQueryHandler> logger)
-    : IQueryHandler<GetProductsQuery, GetProductsResult>
+public class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetProductByIdQueryHandler> logger)
+    : IQueryHandler<GetProductByIdQuery, GerProductByIdResult>
 {
-    public async Task<GetProductsResult> Handle(GetProductsQuery request, CancellationToken cancellationToken)
+    public async Task<GerProductByIdResult> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("GetProductsQueryHandler.Handle called with {@Query}", request);
+        logger.LogInformation("GetProductByIdQueryHandler.Handle called with {@Query}", request);
 
-        var products = await session.Query<Product>().ToListAsync(cancellationToken);
+        var product = await session.LoadAsync<Product>(request.Id, cancellationToken);
         
-        return new GetProductsResult(products);
+        return product is null ? throw new ProductNotFoundException(request.Id) : new GerProductByIdResult(product);
     }
 }
