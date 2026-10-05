@@ -10,8 +10,6 @@ public class DeleteProductQueryHandler(IDocumentSession session, ILogger<DeleteP
 {
     public async Task<DeleteProductResult> Handle(DeleteProductCommand command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("DeleteProductQueryHandler.Handle called with {@Query}", command);
-
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
 
         if (product == null)
