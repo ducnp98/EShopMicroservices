@@ -16,7 +16,7 @@ public class UpdateProductQueryHandler(IDocumentSession session, ILogger<UpdateP
 
         if (product == null)
         {
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException(command.Id);
         }
         
         product.Category = command.Category;
