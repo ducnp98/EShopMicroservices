@@ -1,0 +1,35 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  catalog.api:
+    build:
+      context: "/Users/ducnguyenphuoc/Documents/DotNet8/EShopMicroservice/src"
+      dockerfile: "Services/Catalog/Catalog.API/Dockerfile"
+      target: "base"
+      args:
+        BUILD_CONFIGURATION: "Debug"
+    command: []
+    entrypoint:
+    - "/opt/JetBrains/RiderDebuggerTools/linux-arm64/JetBrains.Debugger.Worker"
+    - "--runtimeconfig"
+    - "/opt/JetBrains/RiderDebuggerTools/JetBrains.Debugger.Worker.runtimeconfig.json"
+    - "--mode=server"
+    - "--frontend-port=57000"
+    - "--backend-port=57200"
+    - "--roslyn-worker-port=57400"
+    - "--timeout=60"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      RIDER_DEBUGGER_LOG_DIR: "/var/opt/JetBrains/RiderDebuggerTools"
+      RESHARPER_LOG_CONF: "/etc/opt/JetBrains/RiderDebuggerTools/backend-log.xml"
+    image: "catalog.api:dev"
+    ports:
+    - "127.0.0.1:57000:57000"
+    - "127.0.0.1:57200:57200"
+    - "127.0.0.1:57400:57400"
+    volumes:
+    - "/Users/ducnguyenphuoc/Documents/DotNet8/EShopMicroservice/src/Services/Catalog/Catalog.API:/app:rw"
+    - "/Users/ducnguyenphuoc/Documents/DotNet8/EShopMicroservice/src:/src:rw"
+    - "/Users/ducnguyenphuoc/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/ducnguyenphuoc/.local/share/JetBrains/RiderRemoteDebugger/2026.2.1/LinuxArm64:/opt/JetBrains/RiderDebuggerTools"
+    - "/Users/ducnguyenphuoc/Library/Logs/JetBrains/Rider2026.2/DebuggerWorker/JetBrains.Debugger.Worker.2026_10_06_00_57_02:/var/opt/JetBrains/RiderDebuggerTools:rw"
+    working_dir: "/app"
