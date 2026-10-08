@@ -25,6 +25,13 @@
       - "5050:8080"
     depends_on:
       - catalogdb
+    
+  basket.api:
+    image: basket.api
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
 
 volumes:
-  postgres_catalog:
+  postgres_catalog:  
+

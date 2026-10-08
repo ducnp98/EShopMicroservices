@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{1D7C23B5-1EB7-44EE-B296-2853FF858299}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{D1EEC07B-BCED-4686-9AA9-552D0BF8AF66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{1D7C23B5-1EB7-44EE-B296-2853FF858299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D7C23B5-1EB7-44EE-B296-2853FF858299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D7C23B5-1EB7-44EE-B296-2853FF858299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EEC07B-BCED-4686-9AA9-552D0BF8AF66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EEC07B-BCED-4686-9AA9-552D0BF8AF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EEC07B-BCED-4686-9AA9-552D0BF8AF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EEC07B-BCED-4686-9AA9-552D0BF8AF66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1D7C23B5-1EB7-44EE-B296-2853FF858299} = {71110825-8927-470A-9509-05E561746DBF}
