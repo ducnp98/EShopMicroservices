@@ -27,7 +27,7 @@
     
   distributedcache:
     image: redis
-    container_name: distributecache
+    container_name: distributedcache
     restart: always
     ports:
       - "6379:6379"
@@ -42,7 +42,7 @@
       - ASPNETCORE_HTTP_PORTS=8080
       - ConnectionStrings__Database=Server=catalogdb;Port=5432;Database=CatalogDb;User Id=postgres;Password=postgres;Include Error Detail=true
     ports:
-      - "5050:8080"
+      - "6060:8080"
     depends_on:
       - catalogdb
     
@@ -51,6 +51,18 @@
     build:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORT=8080
+      - ASPNETCORE_HTTP_PORTS=8081
+      - ConnectionStrings__Redis=distributedcache:6379
+      - ConnectionStrings__Database=Server=basketdb;Port=5432;Database=BasketDb;User Id=postgres;Password=postgres;Include Error Detail=true
+    ports:
+      - "6001:8080"
+      - "6061:8081"
+    depends_on:
+      - basketdb
+      - distributedcache
 
 volumes:
   postgres_catalog:
