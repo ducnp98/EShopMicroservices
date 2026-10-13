@@ -20,6 +20,9 @@
                   <Item>
                     <option name="path" value="Services/Basket/Basket.API/appsettings.Development.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="Services/Discount/Discount.Grpc/appsettings.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
