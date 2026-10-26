@@ -36,3 +36,21 @@ services:
     - "/Users/ducnguyenphuoc/Documents/DotNet8/EShopMicroservice/src:/src:rw"
     - "/Users/ducnguyenphuoc/.nuget/packages:/home/app/.nuget/packages"
     working_dir: "/app"
+  discount.grpc:
+    build:
+      context: "/Users/ducnguyenphuoc/Documents/DotNet8/EShopMicroservice/src"
+      dockerfile: "Services/Discount/Discount.Grpc/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Discount.Grpc.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "discount.grpc:dev"
+    ports: []
+    volumes:
+    - "/Users/ducnguyenphuoc/Documents/DotNet8/EShopMicroservice/src/Services/Discount/Discount.Grpc:/app:rw"
+    - "/Users/ducnguyenphuoc/Documents/DotNet8/EShopMicroservice/src:/src:rw"
+    - "/Users/ducnguyenphuoc/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
