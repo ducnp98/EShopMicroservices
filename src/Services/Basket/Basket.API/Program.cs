@@ -2,6 +2,7 @@ using Basket.API.Database;
 using Basket.API.Models;
 using BuildingBlock.Behavior;
 using BuildingBlock.Exceptions.Handler;
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
@@ -37,6 +38,13 @@ builder.Services.AddHealthChecks()
 //     var basketRepository = provider.GetRequiredService<IBasketRepository>();
 //     return new CachedBasketRepository(basketRepository, provider.GetRequiredService<IDistributedCache>());
 // });
+
+// Grpc services
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+{
+    options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+});
+
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();
